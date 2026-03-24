@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,11 +9,22 @@
   <script>
     tailwind.config = { darkMode: 'class' }
   </script>
+  <style>
+    .carousel-slide {
+      display: none;
+    }
+
+    .carousel-slide.active {
+      display: block;
+    }
+  </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
   <!-- Navbar -->
-  <nav class="fixed w-full z-10 backdrop-blur bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-700">
+  <nav
+    class="fixed w-full z-10 backdrop-blur bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-700">
     <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
       <h1 class="font-bold text-xl">Omar Lozano</h1>
       <div class="space-x-6 hidden md:block">
@@ -27,18 +39,17 @@
   <!-- Hero -->
   <section class="min-h-screen flex items-center justify-center text-center px-4">
     <div class="max-w-2xl">
-      <h2 class="text-5xl font-extrabold mb-4 leading-tight">
-        Full Stack Developer
-      </h2>
-      <p class="text-blue-500 font-semibold mb-4">
-        Java + Spring Boot + Angular
-      </p>
+      <h2 class="text-5xl font-extrabold mb-4 leading-tight">Full Stack Developer</h2>
+      <p class="text-blue-500 font-semibold mb-4">Java + Spring Boot + Angular</p>
       <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
-        Desarrollo aplicaciones completas, desde APIs robustas en backend hasta interfaces modernas en frontend, con enfoque en buenas prácticas y escalabilidad.
+        Desarrollo aplicaciones completas, desde APIs robustas en backend hasta interfaces modernas en frontend, con
+        enfoque en buenas prácticas y escalabilidad.
       </p>
       <div class="flex justify-center gap-4">
-        <a href="#proyecto" class="bg-blue-600 text-white px-6 py-3 rounded-2xl shadow-lg hover:scale-105 transition">Ver proyecto</a>
-        <a href="#contacto" class="border px-6 py-3 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition">Contacto</a>
+        <a href="#proyecto"
+          class="bg-blue-600 text-white px-6 py-3 rounded-2xl shadow-lg hover:scale-105 transition">Ver proyecto</a>
+        <a href="#contacto"
+          class="border px-6 py-3 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition">Contacto</a>
       </div>
     </div>
   </section>
@@ -51,37 +62,73 @@
       <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-xl transition">
         <h3 class="font-bold text-2xl mb-4">Task Manager Full Stack</h3>
         <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-          Aplicación full stack para la gestión de tareas. Incluye backend con API REST segura usando JWT y frontend desarrollado en Angular para una experiencia interactiva.
+          Aplicación full stack para la gestión de tareas. Incluye backend con API REST segura usando JWT y frontend
+          desarrollado en Angular para una experiencia interactiva.
         </p>
-
-        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-          Permite crear, actualizar y gestionar tareas con control de estados, autenticación de usuarios y arquitectura limpia orientada a buenas prácticas.
-        </p>
-
         <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
           <li>✔ Autenticación con JWT</li>
           <li>✔ CRUD de tareas con control de estados</li>
           <li>✔ Frontend en Angular consumiendo API REST</li>
           <li>✔ Arquitectura limpia y escalable</li>
         </ul>
+        <div class="mb-6 text-sm opacity-70">Spring Boot · Angular · JWT · PostgreSQL</div>
 
-        <div class="mb-6 text-sm opacity-70">
-          Spring Boot · Angular · JWT · PostgreSQL
+        <!-- Botones: Modal e GitHub -->
+        <div class="flex gap-4">
+          <button onclick="openModal()" class="bg-blue-600 text-white px-6 py-3 rounded-xl hover:scale-105 transition">
+            Ver imágenes del proyecto
+          </button>
+          <a href="https://github.com/tuusuario/task-manager" target="_blank"
+            class="bg-gray-800 dark:bg-gray-700 text-white px-6 py-3 rounded-xl hover:scale-105 transition">
+            Ver en GitHub
+          </a>
         </div>
-
-        <a href="https://github.com/omarloz10/task_manager" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl hover:scale-105 transition">
-          Ver en GitHub
-        </a>
       </div>
     </div>
   </section>
+
+  <!-- Modal con carrusel -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl max-w-3xl w-full relative">
+      <button onclick="closeModal()"
+        class="absolute top-4 right-4 text-gray-700 dark:text-gray-300 font-bold">✕</button>
+      <h3 class="text-2xl font-bold mb-4">Imágenes del Proyecto</h3>
+      <div class="relative">
+
+        <div class="carousel-slide active">
+          <img src="./img/login.png" alt="Imagen 1" class="rounded shadow w-full">
+        </div>
+        <div class="carousel-slide">
+          <img src="./img/registro.png" alt="Imagen 2" class="rounded shadow w-full">
+        </div>
+        <div class="carousel-slide">
+          <img src="./img/task.png" alt="Imagen 3" class="rounded shadow w-full">
+        </div>
+        <div class="carousel-slide">
+          <img src="./img/task_with_complete_update.png" alt="Imagen 4" class="rounded shadow w-full">
+        </div>
+        <div class="carousel-slide">
+          <img src="./img/task_with_task.png" alt="Imagen 5" class="rounded shadow w-full">
+        </div>
+
+        <!-- Controles -->
+        <button onclick="prevSlide()"
+          class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">‹</button>
+        <button onclick="nextSlide()"
+          class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">›</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Sobre mí -->
   <section id="sobre-mi" class="py-20 bg-gray-100 dark:bg-gray-800">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-4xl font-bold mb-6">Sobre mí</h2>
       <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-        Hola, soy <strong>Omar Lozano</strong>, desarrollador full stack apasionado por crear aplicaciones completas y escalables. Me especializo en Java y Spring Boot en el backend y Angular en el frontend. Busco crear soluciones eficientes, bien estructuradas y fáciles de mantener.
+        Hola, soy <strong>Omar Lozano</strong>, desarrollador full stack apasionado por crear aplicaciones
+        completas y escalables. Me especializo en Java y Spring Boot en el backend y Angular en el frontend. Busco
+        soluciones eficientes, bien estructuradas y fáciles de mantener, combinando lógica sólida con una experiencia de
+        usuario fluida.
       </p>
     </div>
   </section>
@@ -93,22 +140,47 @@
       <p class="mb-6 text-gray-600 dark:text-gray-300">¿Interesado en trabajar conmigo? Contáctame:</p>
       <div class="space-y-2">
         <p>Email: omar.yesid1004@gmail.com</p>
-        <p>GitHub: <a class="cursor-pointer" href="https://github.com/omarloz10">@omarloz10</a></p>
-        <p>LinkedIn: <a class="cursor-pointer" href="https://www.linkedin.com/in/omarloz10/">@omarloz10</a></p>
+        <p>GitHub: <a href="https://www.github.com/omarloz10" target="_blank" class="cursor-pointer text-indigo-500 hover:text-indigo-400 hover:underline">@omarloz10</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/omarloz10/" target="_blank" class="cursor-pointer text-indigo-500 hover:text-indigo-400 hover:underline">@omarloz10</a></p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-    © 2026 Omar Lozano
-  </footer>
+  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400">© 2026 Omar Lozano</footer>
 
   <script>
     function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark')
+      document.documentElement.classList.toggle('dark');
+    }
+    function openModal() {
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal').classList.add('flex');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('flex');
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      const prev = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(prev);
     }
   </script>
 
 </body>
+
 </html>
